@@ -7,23 +7,10 @@
     android:layout_height="match_parent"
     tools:context=".TestActivity">
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="中心文案中心文案中心文案中心文案中心文案
-中心文案中心文案中心文案中心文案中心文案中心文案中心文案中心文案中心文案中心文案中心文案中心文案中心文案中心文案中心文案中心文案中心文案中心文案中心文案中心文案中心文案中心文案中心文案中心文案中心文案中心文案
-中心文案中心文案中心文案中心文案中心文案中心文案中心文案中心文案中心文案中心文案中心文案中心文案
-中心文案中心文案中心文案中心文案中心文案"
-            android:textSize="50sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.core.widget.NestedScrollView>
+  <com.emo.haha.test.PathMeasureView
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

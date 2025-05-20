@@ -20,7 +20,6 @@ class TestActivity : BaseActivity<ActivityTestBinding>() {
     }
 
     override fun initView() {
-        binding.text.text="sdfghjk"
     }
 
     override fun initData() {
