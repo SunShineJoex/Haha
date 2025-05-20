@@ -3,6 +3,7 @@ package com.emo.haha
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
@@ -30,14 +31,40 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import com.emo.haha.compose.BottomBarCase
+import com.emo.haha.compose.FlowCase
+import com.emo.haha.compose.LazyColumnCase
+import com.emo.haha.compose.LazyVerticalGridCase
+import com.emo.haha.compose.LazyVerticalStaggeredGridCase
+import com.emo.haha.compose.ListCase
+import com.emo.haha.compose.PagerCase
+import com.emo.haha.compose.TextFiledCase
+import com.emo.haha.compose.UltraSwipeRefreshSample
 
 class ComposeActivity : ComponentActivity() {
+
+    private val lightScrim = android.graphics.Color.argb(0xe6, 0xFF, 0xFF, 0xFF)
+    private val darkScrim = android.graphics.Color.argb(0x80, 0x1b, 0x1b, 0x1b)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()//全屏模式
-
+        enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.auto(
+                lightScrim = android.graphics.Color.TRANSPARENT,
+                darkScrim = android.graphics.Color.TRANSPARENT,
+            ), navigationBarStyle = SystemBarStyle.auto(
+                lightScrim = lightScrim,
+                darkScrim = darkScrim,
+            )
+        )//全屏模式
+        WindowCompat.getInsetsController(window, window.decorView).apply {
+            isAppearanceLightStatusBars = false // 启用白色图标
+            isAppearanceLightNavigationBars = true
+        }
         setContent {
-            Greeting2()
+            LazyVerticalStaggeredGridCase()
         }
     }
 }
@@ -45,49 +72,12 @@ class ComposeActivity : ComponentActivity() {
 @SuppressLint("InvalidColorHexValue")
 @Composable
 fun Greeting2() {
-    var text by remember { mutableStateOf("") }
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .statusBarsPadding()//防止顶部布局浸入状态栏
-            .navigationBarsPadding()//防止底部布局浸入导航栏
-            .background(Color(0xFFD3D3D3)), contentAlignment = Alignment.TopCenter
-    ) {
-        BasicTextField(value = text,
-            onValueChange = {
-                if (it.length < 12) {//限制数量
-                    text = it
-                }
-            },
-            cursorBrush = SolidColor(Color.Cyan),//光标颜色
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),//键盘类型
-            singleLine = true,
-            modifier = Modifier
-                .padding(top = 30.dp)
-                .background(Color.White, RoundedCornerShape(50.dp))
-                .height(50.dp)
-                .fillMaxWidth(),
-            decorationBox = { innerTextField ->
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.padding(horizontal = 10.dp)
-                ) {
-                    Box(
-                        modifier = Modifier.weight(1f), contentAlignment = Alignment.CenterStart
-                    ) {
-                        innerTextField()
-                        if (text.isBlank()) {//提示文字
-                            Text("请输入。。。", color = Color(0xFFD3D3D3))
-                        }
-                    }
-                }
-            })
-    }
+
 }
 
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun GreetingPreview2() {
-    Greeting2()
+    LazyVerticalStaggeredGridCase()
 }

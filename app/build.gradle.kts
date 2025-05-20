@@ -72,4 +72,15 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation("androidx.compose.material:material:1.8.1")
+// 极致体验的Compose刷新组件 (*必须)
+    implementation("com.github.jenly1314.UltraSwipeRefresh:refresh:1.3.1")
+
+// 经典样式的指示器 (可选)
+//    implementation 'com.github.jenly1314.UltraSwipeRefresh:refresh-indicator-classic:1.3.1'
+// Lottie动画指示器 (可选)
+    implementation("com.github.jenly1314.UltraSwipeRefresh:refresh-indicator-lottie:1.3.1")
+// 进度条样式的指示器 (可选)
+//    implementation 'com.github.jenly1314.UltraSwipeRefresh:refresh-indicator-progress:1.3.1'
+
 }
