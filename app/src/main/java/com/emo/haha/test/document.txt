@@ -1,9 +1,0 @@
-协程：
-    suspend-cps转换 Continuation
-    启动方式
-            runBlocking：阻塞当前线程
-            launch：返回Job
-            async：Deferred wait()获取结果
-    作用域
-    调度器 Default、IO 、Main、Unconfined
-    异常处理CoroutineExceptionHandler
